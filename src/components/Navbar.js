@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import styled, { keyframes } from 'styled-components';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -14,7 +13,10 @@ const Navbar = () => {
     <Nav>
       <NavLogo>My Portfolio</NavLogo>
       <NavToggle onClick={toggleMobileMenu}>
-        {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+        <img
+          src={isMobileMenuOpen ? "/close.png" : "/menu.png"}
+          alt="Menu Icon"
+        />
       </NavToggle>
       <NavMenu isMobileMenuOpen={isMobileMenuOpen}>
         <NavItem>
@@ -39,6 +41,24 @@ const Navbar = () => {
 
 export default Navbar;
 
+const slideDown = keyframes`
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+`;
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
 const Nav = styled.nav`
   height: 60px;
   background: linear-gradient(90deg, rgba(255, 87, 34, 1) 0%, rgba(255, 193, 7, 1) 100%);
@@ -50,7 +70,7 @@ const Nav = styled.nav`
   top: 0;
   z-index: 1000;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  transition: background 0.3s ease;
+  animation: ${slideDown} 0.5s ease forwards;
 `;
 
 const NavLogo = styled.h1`
@@ -60,24 +80,27 @@ const NavLogo = styled.h1`
   cursor: pointer;
   letter-spacing: 1px;
   font-family: 'Roboto', sans-serif;
+  animation: ${fadeIn} 1s ease-in-out;
 `;
 
 const NavMenu = styled.ul`
   list-style: none;
   display: flex;
   gap: 20px;
-  transition: max-height 0.3s ease;
-  overflow: hidden;
 
   @media (max-width: 768px) {
-    flex-direction: column;
-    position: absolute;
+    position: fixed;
     top: 60px;
     right: 0;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.9);
     width: 100%;
-    max-height: ${({ isMobileMenuOpen }) => (isMobileMenuOpen ? '400px' : '0')};
-    transition: max-height 0.5s ease-out;
+    height: ${({ isMobileMenuOpen }) => (isMobileMenuOpen ? 'calc(100vh - 60px)' : '0')};
+    transform: ${({ isMobileMenuOpen }) => (isMobileMenuOpen ? 'translateY(0)' : 'translateY(-100%)')};
+    transition: transform 0.5s ease, height 0.5s ease;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: center;
+    z-index: 9999; /* Ensure the menu appears above other elements */
   }
 `;
 
@@ -97,16 +120,22 @@ const StyledLink = styled(Link)`
   &:hover, &.active {
     background: rgba(255, 255, 255, 0.2);
     color: #f39c12;
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
 `;
 
 const NavToggle = styled.div`
   display: none;
   cursor: pointer;
-  font-size: 1.8rem;
-  color: #fff;
 
   @media (max-width: 768px) {
     display: block;
+    animation: ${fadeIn} 0.5s ease-in-out;
+
+    img {
+      width: 30px; /* Adjust the size as needed */
+      height: 30px; /* Adjust the size as needed */
+    }
   }
 `;
