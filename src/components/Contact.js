@@ -86,41 +86,55 @@ const neonAnimation = keyframes`
 
 const ContactSection = styled.section`
   padding: 50px 20px;
-  
   border-radius: 15px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  background: #f9f9f9;
 `;
 
 const FormContainer = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   max-width: 1200px;
   margin: auto;
   overflow: hidden;
   border-radius: 15px;
   background: #fff;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+
+  @media(min-width: 768px) {
+    flex-direction: row;
+  }
 `;
 
 const ImageSection = styled.div`
   flex: 1;
+  width: 100%;
+  
   img {
     width: 100%;
     height: auto;
     object-fit: cover;
-    border-radius: 0 15px 15px 0;
+    border-radius: 0 0 15px 15px;
+
+    @media(min-width: 768px) {
+      border-radius: 0 15px 15px 0;
+    }
   }
 `;
 
 const FormSection = styled.div`
   flex: 1;
   padding: 30px;
-  max-width: 600px;
-  overflow-y: auto;
+  width: 100%;
   background: #000;
-  border-radius: 15px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 15px 15px 0 0;
+
+  @media(min-width: 768px) {
+    max-width: 600px;
+    border-radius: 15px 0 0 15px;
+  }
 
   h2 {
     text-align: center;
