@@ -36,8 +36,9 @@ const Blogs = () => {
 export default Blogs;
 
 const BlogsSection = styled.section`
-  padding: 80px 20px;
+  padding: 60px 20px;
   background: linear-gradient(135deg, #f3f4f6, #ffffff);
+  overflow-x: hidden;
 `;
 
 const Header = styled.div`
@@ -45,7 +46,7 @@ const Header = styled.div`
   margin-bottom: 40px;
 
   h2 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 700;
     color: #333;
     position: relative;
@@ -53,7 +54,7 @@ const Header = styled.div`
     &::after {
       content: '';
       display: block;
-      width: 100px;
+      width: 80px;
       height: 4px;
       background: #007bff;
       position: absolute;
@@ -62,13 +63,29 @@ const Header = styled.div`
       transform: translateX(-50%);
       border-radius: 2px;
     }
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
   }
 `;
 
 const BlogGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+
+  @media (max-width: 768px) {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 15px;
+    padding-bottom: 20px;
+
+    &::-webkit-scrollbar {
+      display: none; /* Hide scrollbar for better UX */
+    }
+  }
 `;
 
 const BlogCard = styled.div`
@@ -79,10 +96,15 @@ const BlogCard = styled.div`
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
+  scroll-snap-align: center;
 
   &:hover {
-    transform: translateY(-15px);
+    transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    min-width: 280px;
   }
 `;
 
