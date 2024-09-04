@@ -1,15 +1,15 @@
 const projectsData = [
     {
       id: 1,
-      title: 'Website 1',
-      description: 'A sleek and responsive website built with HTML and CSS. It features a modern design, smooth animations, and is optimized for all devices.',
-      image: '/web2.png', // Reference the image relative to the public folder
+      title: 'React Landing Page',
+      description: 'A visually stunning and advanced React-based landing page featuring smooth animations, a moving gradient background, and modern design elements.',
+      image: '/landing-page.png', // Reference the image relative to the public folder
       category: 'Web Development',
-      link: 'https://example.com/project1',
+      link: 'https://landing-page-henna-pi-82.vercel.app/',
     },
     {
       id: 2,
-      title: 'Website 2',
+      title: 'CSS Layout',
       description: 'An interactive website showcasing advanced CSS techniques and JavaScript functionalities. It includes dynamic content and an engaging user experience.',
       image: '/Web3.png', // Reference the image relative to the public folder
       category: 'Web Development',
@@ -49,19 +49,19 @@ const projectsData = [
     },
     {
       id: 7,
-      title: 'News Website',
-      description: 'A news aggregation website that pulls in the latest headlines and articles from various sources. It includes features for filtering news by category and searching for specific topics.',
-      image: '/news.png', // Reference the image relative to the public folder
+      title: 'JS Motion',
+      description: 'A simple HTML CSS and JavaScript website that uses GSAP and locomotive motion ,having smooth effects ',
+      image: '/js website.png', // Reference the image relative to the public folder
       category: 'Web Development',
-      link: 'https://example.com/project7',
+      link: 'https://js-project-drab.vercel.app/',
     },
     {
       id: 8,
-      title: 'Portfolio Website',
-      description: 'A personal portfolio website showcasing my skills, projects, and achievements. Includes interactive elements, animations, and a modern design to highlight my work.',
-      image: '/My portfolio.png', // Reference the image relative to the public folder
+      title: 'React CountDown timer',
+      description: 'A simple yet advanced React-based countdown timer with customizable UI and dynamic features, allowing users to set countdowns for events with precision and style.',
+      image: '/Countdown Timer.png', // Reference the image relative to the public folder
       category: 'Web Development',
-      link: 'https://example.com/project8',
+      link: 'https://countdown-timer-react-mu.vercel.app/',
     },
   ];
   
